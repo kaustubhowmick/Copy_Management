@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Text Management Tool</h1>
+
+        <div class="input-row">
+            <input type="text" id="inputText" placeholder="Enter text here…" autocomplete="off">
+            <button id="addButton" type="button">Add</button>
+        </div>
+
+        <div class="toolbar">
+            <input type="search" id="searchText" placeholder="Search…" autocomplete="off">
+            <select id="sortSelect" aria-label="Sort items">
+                <option value="manual">Custom order</option>
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+            </select>
+        </div>
+
+        <div class="meta-row">
+            <span id="count" class="count">0 items</span>
+            <div class="io">
+                <button id="exportBtn" type="button" class="ghost">Export</button>
+                <button id="importBtn" type="button" class="ghost">Import</button>
+                <input type="file" id="importFile" accept="application/json,.json" hidden>
+            </div>
+        </div>
+
+        <ul id="textList"></ul>
+        <p id="emptyState" class="empty">Nothing saved yet. Add some text above.</p>
+
+        <details class="tips">
+            <summary>Tips</summary>
+            <ul class="tips-list">
+                <li><kbd>Enter</kbd> adds the text in the box</li>
+                <li><strong>Double-click</strong> a row to edit it inline (<kbd>Enter</kbd> saves, <kbd>Esc</kbd> cancels)</li>
+                <li><strong>Drag</strong> the handle to reorder (in <strong>Custom order</strong> only)</li>
+                <li><strong>Sort</strong> is just a view — it never changes your saved order</li>
+                <li>Use the <strong>Search</strong> box to filter as you type</li>
+                <li><strong>Copy</strong> / <strong>Delete</strong> per row — deletes can be undone from the toast</li>
+                <li><strong>Export</strong> / <strong>Import</strong> to back up or move your list</li>
+            </ul>
+        </details>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <span id="toastMsg"></span>
+        <button id="toastAction" type="button" class="toast-action" hidden></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
